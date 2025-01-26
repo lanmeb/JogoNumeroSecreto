@@ -1,17 +1,3 @@
-//let titulo = document.querySelector('h1');
-//titulo.innerHTML = 'Jogo do número secreto';
-
-//let paragrafo = document.querySelector('p');
-//paragrafo.innerHTML = 'Escolha um número entre 1 e 10';
-
-
-/** o codigo acima se repete so muda a tag e o texto, nesses
- * casos qdo ha um padrao q se repete, o ideal é usar functions
- */
-//  let campo = document.querySelector(tag)
-//  campo.innerHTML = texto
-
-
 let listaDeNumerosSorteados = [];
 let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();/* essa variavel guarda o return da funcao gerarNumAleatorio*/
@@ -30,9 +16,6 @@ function exibirTextoNaTela(tag, texto) {
         console.log("Web Speech API não suportada neste navegador.");
     }
 }
-
-//exibirTextoNaTela('h1', 'Jogo do número secreto');
-//exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
 function exibirMensagemInicial() {
         exibirTextoNaTela('h1', 'Jogo do número secreto');
         exibirTextoNaTela('p', 'Escolha um número entre 1 e 10');
@@ -41,20 +24,12 @@ function exibirMensagemInicial() {
 exibirMensagemInicial();   
 
 function verificarChute() {
-    //console.log('O botão foi clicado!')
-    let chute = document.querySelector('input').value;
-    //console.log(numeroSecreto);
-    // console.log(chute == numeroSecreto);
-   
-   // Verifica se o chute contém apenas dígitos numéricos, é mais precisa do que isNan
+   let chute = document.querySelector('input').value;
         if (!/^\d+$/.test(chute)) {
-                exibirTextoNaTela('p', 'Por favor, insira apenas números.');
-                return;
+            exibirTextoNaTela('p', 'Por favor, insira apenas números.');
+            return;
         }
-    //chute = parseInt(chute);
     if (chute == numeroSecreto) {
-        //exibirTextoNaTela('h1', 'Acertou!');
-        //exibirTextoNaTela('p', 'Você descobriu o número secreto!');
         exibirTextoNaTela('h1', 'Acertou!');
         let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
         let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
@@ -70,10 +45,6 @@ function verificarChute() {
                 limparCampo();
         }
 }
-   
-
-
-
 function gerarNumeroAleatorio() {
         let numeroEscolhido = parseInt(Math.random() * numeroLimite + 1);
         let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
